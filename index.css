@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Puddles&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+#title{
+    margin-left: 20px;
+    font-family: 'Rubik Puddles', cursive;
+}
+
+*{
+    color: yellow;
+    font-family: 'Roboto', sans-serif;
+}
+
+body{
+    background-color: #191919;
+}
+
+.nav-items{
+    display: flex;
+
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid white;
+    padding: 10px;
+    margin: 10px;
+}
+
+.nav-items > li{
+    margin-right: 20px;
+    list-style-type: none;
+}
+
+.logo{
+    width: 150px;
+}
+
+.card{
+    width: 200px;
+    border: 1px solid white;
+    padding: 20px;
+    margin: 10px;
+}
+
+.card > img {
+    width: 100%;
+}
+
+.Restaurant-List{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.search-btn{
+    color:black;
+}
+
+.search-container input[type="text"] {
+    color: black;
+  }
+  

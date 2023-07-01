@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Namaste React</title>
+    <link rel="stylesheet" type="text/css" href="index.css" />
+</head>
+<body>
+    
+    <div id="root">
+        <h1>Not Render</h1>
+    </div><!-- root is the place where we inject our React. As we r rendring it so we can use other div's  
+        alongwithit. We can also put React in our existing projects. Just we've 2 render that particular root -->
+<!-- Rendering an element using React  -->
+ <script type="module" src="src/App.js"></script> <!-- So when we export App.js the first line encountered is import which the 
+    Browser doesn't understands as it understands App.js as a file. To fix this App.js needs to be exported as a 
+    module -->
+    </body>
+
+<!-- Rendering an element using JS  -->
+<!-- <script>
+    const heading = document.createElement('h1')
+    heading.innerHTML = 'Namaste React'
+    const root = document.getElementById('root')
+    root.appendChild(heading)
+</script> -->
+</html>
