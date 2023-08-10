@@ -1,4 +1,6 @@
 Lecture: 1
+Study about Emmet: https://www.youtube.com/watch?v=V8vizNQKtx0&t=528s
+React came into existence as developers wanted to write HTML, CSS inside JS.
 "npm init" is used for installing package.json file
 npm i -D / --save/same(strange but works on my PC)-dev parcel for instaling parcel bundler where '-D' stands for devDependencies which is for development purpose not for production
 "dependencies": {
@@ -14,6 +16,10 @@ Never ever upload node_modules in Github as they're heavy in size. package-lock.
 <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 Above 2 lines of code is not good for doing react as it is dependent upon cdn or we can say unpkg.com & the react version is dependent upon it. Whereas node_modules will be in our server. So we can import React in it which will be much easier to download.
+Any doubt in React: Type that particular name with React after it and google search/ chatgpt search
+If we've created something using HTML and have given an id. Entire content of this can be overwritten by react.create
+Element
+
 
 Lecture: 2
 npx(execute using npm) parcel index.htm(entry point. It can be any file which we want to choose as entry point). This makes a development build & hosts it on the server.
