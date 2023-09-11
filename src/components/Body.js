@@ -7,8 +7,8 @@ import {useState} from 'react';
 //map function is passing an object(restaurant) to take a JSX(RestaurantCard) as return
 const Body = () => {
   //const searchText = 'KFC'; <====== JavaScript way
-  const [searchInput, setSearchInput] = useState(); //local variable changes to local state variable as useState gives state to the 
-  //local variable
+  const [searchInput, setSearchInput] = useState(); //local variable changes to local state variable as useState gives  
+  //state to the local variable
   //There's no hard n fast rule for writing set before the function which we'll use to update the local state variable
   //but as per industry standard it's good.
     return (

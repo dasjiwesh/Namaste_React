@@ -52,7 +52,7 @@ In package.json mentioning last 2 versions in browserslist is last 2 versions of
 
   
 Lecture: 3
-devDependencies is for development environment whereas dependencies is for overall environment.
+devDependencies is for development environment whereas dependencies is for overall/ production environment.
 Polyfill: Code which is a replacement for a newer version fo code (babel does it with the help of browserslist). Say Array.map() <==> function myMap(). It happens because older version of browsers doesn't supports ES6.
 Babel takes 1 piece of code & splits it into other piece of code.
 git init initialises the repo with git. Then features like branches, collaborations, pull, push we can use
@@ -90,7 +90,7 @@ const heading2 = (
 <h1 id='title' key='h2' tab-index='1'>         
 Namaste React                                                                      
 </h1>
-); JSX Expression: content inside (). And from const till ; React Element.
+); JSX Expression: content inside (). And from const till ; React Element. We can put this in same line without bracket
 JSX is a syntax whereas babel is a dependency 
 const heading2 = (                                                             
 <h1 id='title' key='h2' tab-index='1'>         
@@ -104,7 +104,10 @@ Namaste React
 </h1>
 );    
 Component Composition = Passing Component into Component    
-Babel needs to be installed imdividually. Best practice is with a bundler like Parcel, Webpack, VIte
+Babel needs to be installed individually. Best practice is with a bundler like Parcel, Webpack, Vite
+Whenever we are writing a command with build in it is a production build whereas command dedicated for build with no build in it is a development build.
+
+
 
 Lecture: 4
 Whenever we write JSX it gives us ReactElement(which is actually an Object) because of babel
@@ -159,6 +162,7 @@ No issues in writing React.Fragment inside React.Fragment
 Very Important Thing For Interviews: Config Driven UI's which is actually in layman terms called dynamic UI. Say we can have different restaurants with/ without offers, cuisines from intra/ inter city. To cater that, we need Config Driven UI.
 Read about Optional Chaining in JavaScript
 Whenever we're trying to render we write <RestaurantCard Restaurant={RestaurantList[0]} /> in which Restaurant is a function call which is a functional component here, {Restaurant=RestaurantList[0]} is the argument passed which is props here. When we pass props to a functional component then it is received as a parameter which can be used as any other variable. As we know in React we can write any piece of JS code within {}. {RestaurantList[0]} is a function call.
+Functional Component always returns JSX.
 We can pass multiple props while rendering <RestaurantCard Restaurant={RestaurantList[0]} hello='world'/>. Here hello='world' is the 2nd prop.
 Both 2 immediate examples are of destructuring
 const RestaurantCard = ({restaurant}) => { We can also put {{restaurant}} in place of (props)
@@ -186,7 +190,8 @@ const RestaurantCard = {{restaurant}} => {
 };
 Study difference b/w map & forEach, React Fibre, Reconciliation from React doc
 React DOM is not actual DOM but a representation of DOM. HMR in parcel is diffreent then this as it's for the file whereas DOM is for Browser. React uses Diff algorithm which distinguishes b/w trees.
-React 16 released React Fibre which a new Reconciliation Engine which is responsible for diff
+Reconciliation is done with diffin algorithm which helps in detecting the change in tree structure and then re-rendering it.
+React 16 released React Fibre which is a new Reconciliation Engine which is responsible for diff <=== Read about it.
 const Body = () => {
   return (<div className='Restaurant-List'>
     {RestaurantList.map((Restaurant) => {
@@ -202,7 +207,9 @@ const Body = () => {
          })}      
   </div>)
 }; 
-We should never ever use index as the key. Read react for this. Also https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/
+We should never ever use index as the key. Read react for this. Also https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/.
+No Key(Not Acceptable) < Index Key(Only If we don't have any key) < Unique Key(Best Way). Priority should be this while giving keys
+Same tags(div, div, div) require keys whereas different tags(div, img, ul) don't.
 Read ===> https://legacy.reactjs.org/docs/faq-structure.html for React File Structure
 
 
@@ -214,7 +221,7 @@ export const Title = () => (
     <img className="logo" alt='logo' src='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/' />
     </a>
   );
-  Above needs to be imported as import {Title} from './components/Header'; this curly braces are for Named Import
+  Above needs to be imported as import {Title} from './components/Header'; this curly braces are for Named Import. And also without exported it can't be used.
 
   const HeaderComponent = () => {
     return (
@@ -231,17 +238,15 @@ export const Title = () => (
       </div>
     );
   };
-  export default HeaderComponent; <=== This is Default Import which needs to be imported as import HeaderComponent from './components/Header'; which is without curly braces
-  Although we can import like this also import HeaderComponent, {Title} from './components/Header'; 
+  export default HeaderComponent; <=== This is Default Import which needs to be imported as import HeaderComponent(can be named different while importing but same name is a general convention) from './components/Header'; which is without curly braces
+  Although we can import like this import HeaderComponent, {Title}(Title being a Named Export) from './components/Header'; 
   './components/Header' './components/Header.js' both are fine 
 Even if there are two named imports we can write like this {a, b}
-We can also import named imports like ====> import * as Obj from './components/Header' and use like this as Obj.Title while rendering <Obj.Title />. * imports every component from that particular file so we render <Obj.Header />.
-
+We can also import named imports like ====> import * as Obj from './components/Header' and use like this as Obj.Title while rendering <Obj.Title />. * imports every component from that particular file so we render <Obj.Header />.With this example we can also understand React.Fragment. Akshay suggested his own way of writing clean code that if we are exporting 2 things say Header & Title. We can only export Header using default putting Title inside Header. This'll let us import Header by default.
 Thre's no issue in writing extensions like .js/.jsx. Both are same. But sometimes if we are using an external library then it can break as it tracks these kind of files.
-
 Hooks is a JS Function
 const [searchText] = useState(); useState Hooks returns an array in which variable name(searchText) is the 1st element. Creates Local State Variable, here searchText. Whereas normal JS variables are crreated using let, const, var
-Below block of code won't run in React whereas in HTML it'll run. 
+Below block of code won't run in React whereas in HTML it'll run.     
 const searchText = 'KFC'; //local variable
     return (
     <>
@@ -254,4 +259,4 @@ const searchText = 'KFC'; //local variable
       onChange={(e)=>{
         searchText = e.target.value;
       }}/>
-Above code: We can't change values for local variable(searchText, in this case) created in React with onChange function. That we've to do with the help of Hooks which will give a function to update the local variable. 
+Above code: We can't change values for local variable(searchText, in this case) created in React with onChange function. That we've to do with the help of Hooks(useState). useState gives an array in which the 1st thing is a variable. Now in above case we use callback(e) function to update the upcoming values into the variable. Whereas if we want to show a particular value we can create a JS variable and place it wherever required. useState's variable is only required when working under React otherwise not & also if we want to change the value of the variable from time-to-time. 
